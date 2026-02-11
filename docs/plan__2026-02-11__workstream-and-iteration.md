@@ -82,17 +82,24 @@ groundwork for the broader `issuesFS.ai` domain architecture.
 
 | Source Repo | Issue | Status | Summary |
 |-------------|-------|--------|---------|
-| Architect | Task-4 | backlog | Revert ADR-001 to Jekyll (stakeholder decision) |
-| Architect | Task-5 | backlog | Design domain architecture for issuesFS.ai |
-| Dev | Task-3 | backlog | Implement Jekyll news site per ADR-001 |
-| DevOps | Task-4 | backlog | Deploy GitHub Pages and DNS for news.issuesFS.ai |
+| Architect | Task-4 | **done** | Revert ADR-001 to Jekyll (stakeholder decision) |
+| Architect | Task-5 | **done** | Design domain architecture for issuesFS.ai (ADR-002) |
+| Dev | Task-3 | **done** | Implement Jekyll news site per ADR-001 |
+| DevOps | Task-4 | **done** | Deploy GitHub Pages for news site |
 | Journalist | Task-1 | backlog | Write article: P0 Double-Path Bug Fix ships |
 | Journalist | Task-2 | backlog | Create daily news bulletin for 2026-02-10 |
 | Journalist | Task-5 | backlog | Write synthesis article from all role interview responses |
 | Journalist | Task-6 | backlog | Create index page linking all interview resources |
 
-**Owner:** Architect (ADR finalisation), Dev (Jekyll site build), DevOps (deploy), Journalist (content).
-**Why important:** The stakeholder wants to ship. The news site is the first externally visible artefact, and content (double-path bug fix article, stakeholder interview synthesis) is ready to be written. The domain architecture ADR sets the pattern for all future sites.
+**Status note (2026-02-11):** The infrastructure and architecture for WS-3 is
+complete. ADR-001 (Jekyll, Accepted), ADR-002 (issuesFS.ai domain architecture),
+the Jekyll site build, and GitHub Pages deployment are all done. The news site
+is live at `https://owasp-sbot.github.io/Issues-FS__Dev__Role__Journalist/`.
+Custom domain (`news.issuesFS.ai`) is deferred. Remaining items are Journalist
+content tasks, two of which (Task-5, Task-6) are blocked on WS-4 role responses.
+
+**Owner:** Journalist (remaining content).
+**Why important:** The stakeholder wants to ship. The news site is live and the first externally visible artefact. Content (double-path bug fix article, stakeholder interview synthesis) is ready to be written.
 
 ---
 
@@ -182,12 +189,10 @@ catalogue entries.
 - **Dependencies:** None (source documents already exist).
 - **Definition of Done:** All three artefacts catalogued. Librarian Task-3 updated to `done`.
 
-#### 6. Architect: Finalise ADR-001 as Jekyll (WS-3)
+#### 6. ~~Architect: Finalise ADR-001 as Jekyll (WS-3)~~ **DONE**
 
-- **What:** Revert ADR-001 to Jekyll per stakeholder preference. Close the Hugo revision task as superseded. This unblocks the Dev and DevOps work to build and deploy the news site.
-- **Owner:** Architect
-- **Dependencies:** None (stakeholder decision already made).
-- **Definition of Done:** ADR-001 status set to Accepted with Jekyll as the technology choice. Architect Task-2 closed as superseded. Architect Task-4 updated to `done`.
+- **Status:** Completed prior to this plan. ADR-001 accepted as Jekyll, ADR-002 (domain architecture) also completed. Jekyll site built and deployed. News site live at GitHub Pages.
+- **Implication:** The Dev Task-3 and DevOps Task-4 items listed in the backlog below are also done. Iteration 2 WS-3 work reduces to Journalist content only.
 
 ---
 
@@ -202,10 +207,10 @@ The following items are important but deferred to Iteration 2 or later:
 | Task-9 -- Task-12: MGraphDB layer (B18-B21) | WS-1 | Multi-task chain; needs Architect input on schema first |
 | Task-14, Task-15: LLM docs and traceability | WS-1 | Process improvement, not a shipping blocker |
 | Feature-2: Classify to_classify docs | WS-2 | Valuable but large; Librarian should build cataloguing muscle on smaller items first |
-| Dev Task-3: Build Jekyll news site | WS-3 | Blocked by ADR-001 finalisation (Iteration 1 item 6) |
-| DevOps Task-4: Deploy GitHub Pages | WS-3 | Blocked by site build |
-| Architect Task-5: issuesFS.ai domain architecture | WS-3 | Needs ADR-001 accepted first as reference point |
-| Journalist Task-1, Task-2: Articles | WS-3 | Content can be written in parallel but publishing needs the site |
+| ~~Dev Task-3: Build Jekyll news site~~ | WS-3 | **DONE** -- site built and deployed |
+| ~~DevOps Task-4: Deploy GitHub Pages~~ | WS-3 | **DONE** -- live at GitHub Pages |
+| ~~Architect Task-5: issuesFS.ai domain architecture~~ | WS-3 | **DONE** -- ADR-002 accepted |
+| Journalist Task-1, Task-2: Articles | WS-3 | Site is live; content can be published now |
 | Journalist Task-5, Task-6: Synthesis and index | WS-4 | Blocked by all 9 role responses completing |
 | Librarian Task-5: Catalog all responses | WS-4 | Blocked by all 9 role responses completing |
 | DevOps Task-5: Post-merge cleanup | WS-5 | Important hygiene but not blocking any current work |
@@ -235,18 +240,20 @@ Item 6 is independent but unblocks the WS-3 chain in Iteration 2.
 2. Label generation is consistent -- no divergent algorithms (Bug-4, Bug-5, Bug-6 resolved).
 3. All 9 role interview responses exist in their respective repos.
 4. The Librarian has produced at least two catalogue entries (bug fix debrief, stakeholder interview).
-5. ADR-001 is finalised as Jekyll/Accepted, unblocking the news site build.
+5. ~~ADR-001 is finalised as Jekyll/Accepted, unblocking the news site build.~~ **DONE** -- ADR-001 accepted, site live.
 
 ---
 
 ## Iteration 2 Preview (Not Scheduled)
 
-- **Build and deploy the Jekyll news site** (Dev builds, DevOps deploys, Journalist publishes first articles).
+- ~~**Build and deploy the Jekyll news site**~~ **DONE** -- live at GitHub Pages.
+- **Journalist publishes first articles** (site is ready, content can go live now).
 - **MGraphDB schema design** (Architect leads Task-9, unblocking Tasks 10-12).
 - **Journalist synthesis article** (depends on all 9 role responses from Iteration 1).
 - **Classify to_classify docs** (Librarian Feature-2).
 - **Post-merge branch and tag cleanup** (DevOps Task-5).
-- **issuesFS.ai domain architecture ADR** (Architect Task-5).
+- ~~**issuesFS.ai domain architecture ADR** (Architect Task-5).~~ **DONE** -- ADR-002 accepted.
+- **Configure custom domain** `news.issuesFS.ai` (DNS CNAME + GitHub Pages settings).
 
 ---
 
